@@ -1,0 +1,16 @@
+{
+  "name": "com.finishone.scene-management",
+  "version": "1.0.0",
+  "displayName": "Scene Management",
+  "description": "This package contains our scene loading/signaling system.",
+  "unity": "2022.3",
+  "keywords": [
+    "scene"
+  ],
+  "author": {
+    "name": "Finish One Games"
+  },
+  "dependencies": {
+    "com.unity.addressables": "1.21.14"
+  }
+}
