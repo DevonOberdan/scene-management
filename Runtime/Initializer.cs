@@ -1,37 +1,36 @@
-using ScriptableObjectLibrary;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-public class Initializer : MonoBehaviour
+namespace FinishOne.SceneManagement
 {
-    [SerializeField] SceneLoadConfigSO managerScene;
-
-    [SerializeField] SceneLoadConfigSO sceneToLoad;
-
-    // assetreference so that we dont have duplicate that is stranded from the rest of the game!
-    [SerializeField] AssetReference sceneLoadEvent;
-
-    void Start()
+    public class Initializer : MonoBehaviour
     {
-        managerScene.sceneRef.LoadSceneAsync(LoadSceneMode.Additive, true).Completed += GrabSceneLoadAsset;    
-    }
+        [SerializeField] private SceneLoadConfigSO managerScene;
 
-    private void GrabSceneLoadAsset(AsyncOperationHandle<SceneInstance> obj)
-    {
-        sceneLoadEvent.LoadAssetAsync<SceneLoadEventSO>().Completed += LoadRealScene;
-    }
+        [SerializeField] private SceneLoadConfigSO sceneToLoad;
 
-    private void LoadRealScene(AsyncOperationHandle<SceneLoadEventSO> obj)
-    {
-        obj.Result.Raise(sceneToLoad);
+        // assetreference so that we dont have duplicate that is stranded from the rest of the game!
+        [SerializeField] private AssetReference sceneLoadEvent;
 
-        //unload this current scene, which is Initializer scene
-        SceneManager.UnloadSceneAsync(0);
+        private void Start()
+        {
+            managerScene.sceneRef.LoadSceneAsync(LoadSceneMode.Additive, true).Completed += GrabSceneLoadAsset;
+        }
+
+        private void GrabSceneLoadAsset(AsyncOperationHandle<SceneInstance> obj)
+        {
+            sceneLoadEvent.LoadAssetAsync<SceneLoadEventSO>().Completed += LoadRealScene;
+        }
+
+        private void LoadRealScene(AsyncOperationHandle<SceneLoadEventSO> obj)
+        {
+            obj.Result.Raise(sceneToLoad);
+
+            //unload this current scene, which is Initializer scene
+            SceneManager.UnloadSceneAsync(0);
+        }
     }
 }

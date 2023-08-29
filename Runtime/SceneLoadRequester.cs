@@ -1,18 +1,18 @@
-using ScriptableObjectLibrary;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneLoadRequester : MonoBehaviour
+namespace FinishOne.SceneManagement
 {
-    [SerializeField] SceneLoadEventSO loadEvent = default;
-    [SerializeField] SceneLoadConfigSO defaultScene;
-
-    public void Request(SceneLoadConfigSO sceneToLoad = null)
+    public class SceneLoadRequester : MonoBehaviour
     {
-        if (sceneToLoad != null)
-            loadEvent.OnRequestLoad?.Invoke(sceneToLoad);
-        else
-            loadEvent.OnRequestLoad?.Invoke(defaultScene);
+        [SerializeField] private SceneLoadEventSO loadEvent = default;
+        [SerializeField] private SceneLoadConfigSO defaultScene;
+
+        public void Request(SceneLoadConfigSO sceneToLoad = null)
+        {
+            if (sceneToLoad != null)
+                loadEvent.OnRequestLoad?.Invoke(sceneToLoad);
+            else
+                loadEvent.OnRequestLoad?.Invoke(defaultScene);
+        }
     }
 }
