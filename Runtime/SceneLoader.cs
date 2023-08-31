@@ -8,8 +8,6 @@ namespace FinishOne.SceneManagement
     public class SceneLoader : MonoBehaviour
     {
         [SerializeField] private SceneLoadEventSO loadEvent = default;
-        [SerializeField] private SceneLoadConfigSO startScene;
-
         [SerializeField] private SceneLoadEventSO editorStartEvent;
 
         private SceneLoadConfigSO currentScene;

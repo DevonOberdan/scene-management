@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 65362949434bf6749912b5dbc93bd882
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - managerScene: {fileID: 11400000, guid: c1c51825d2affd14392aca9b94d03ee1, type: 2}
+  - currentStartScene: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
