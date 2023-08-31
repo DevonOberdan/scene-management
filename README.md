@@ -33,9 +33,25 @@ The intent of this scene is to house any scripts that should exist in perpetuity
 
 **Note**: 
 
-- This scene, and its corresponding Config asset, will need to be configured similarly to the actual scenes of your game, as outlined below.
+- This scene, and its corresponding Config asset, will need to be configured similarly to the actual scenes of your game, as outlined below under **Setting up a New Scene**.
 
-### Creating a new scene:
+
+### Initialization Scene:
+
+This scene is what your build loads into, and immediately loads in the Manager Scene and additively loads in the first scene of your game loop.
+
+1. Move this scene into the top level of your Scenes folder.
+2. Add Initialization to your Build Settings; it will be the only scene in your project's Build Settings due to the nature of how the remaining scenes are loaded through the Addressable system.
+3. On the `Initializer` prefab, add the `SceneLoadConfigSO` asset of your game's starting scene; MainMenu, etc.
+
+**Note**:
+
+- This scene, and the folder it is in, should not be marked as Addressable.
+
+## Usage:
+
+
+### Setting up a New Scene:
 
 1.  Make your new scene file as you would normally.
 2.  Place the scene into the `GameScenes` folder.
@@ -58,17 +74,5 @@ The intent of this scene is to house any scripts that should exist in perpetuity
 
 1. Add in the EditorInitializer prefab into the scene you are working in.
 2. `ManagerScene` and `EditorStartEventSO` should already be populated; add the `SceneLoadConfigSO` belonging to the given scene you are in.
-
-
-### Initialization:
-
-This scene is what your build loads into, and immediately loads in the Manager Scene and additively loads in the first scene of your game loop.
-
-1. Move this scene into the top level of your Scenes folder.
-2. Add Initialization to your Build Settings; it will be the only scene in your project's Build Settings due to the nature of how the remaining scenes are loaded through the Addressable system.
-
-**Note**:
-
-- This scene, and the folder it is in, should not be marked as Addressable.
 
 
