@@ -7,20 +7,22 @@ Derived from the Unity Open Project, [Chop Chop](https://github.com/UnityTechnol
 
 ## Initial Setup:
 
--   Import the `Scene Management Sample` sample into project.
--   Inside of the generated `SceneManagementSetup` folder, do the following:
+1.   Import the `Scene Management Sample` sample into project.
+2.   Inside of the generated `SceneManagementSetup` folder, do the following:
 
-    - Make a path to `Assets/ScriptableObjects/SceneManagement`; select the `Events` and `SceneConfigs` folder and place them inside this SceneManagement folder.
-    - Mark both the `Events` and `SceneConfigs` folders as **Addressable** on the top of the Inspector window.
-    - Move the contents of the `Prefabs` folder to `Assets/Prefabs/SceneManagement`.
+        - Make a path to `Assets/ScriptableObjects/SceneManagement`; select the `Events` and `SceneConfigs` folder and place them inside this SceneManagement folder.
+        - Mark both the `Events` and `SceneConfigs` folders as **Addressable** on the top of the Inspector window.
+        - Move the contents of the `Prefabs` folder to `Assets/Prefabs/SceneManagement`.
+    
+**Note**: 
 
-    **Note**: You will need to add a `SceneConfig` ScriptableObject asset for each new Scene you create, so be sure to add them to this `SceneConfigs` folder to ensure they are automatically setup to be addressable.
+- You will need to add a `SceneConfig` ScriptableObject asset for each new Scene you create, so be sure to add them to this `SceneConfigs` folder to ensure they are automatically setup to be addressable.
 
 ### Scenes:
 
-- Create a folder called `GameScenes` inside your `Scenes` folder.
-- Move the `ManagersScene` scene into this folder.
-- Mark this folder as **Addressable**. All new game scenes should be added to this folder.
+1. Create a folder called `GameScenes` inside your `Scenes` folder.
+2. Move the `ManagersScene` scene into this folder.
+3. Mark this folder as **Addressable**. All new game scenes should be added to this folder.
 
 ### ManagerScene:
 
@@ -29,7 +31,9 @@ The intent of this scene is to house any scripts that should exist in perpetuity
 
 - AudioManager that serves as the single source for playing audio.
 
-        Note: This scene, and its corresponding Config asset, will need to be configured similarly to the actual scenes of your game, as outlined below.
+**Note**: 
+
+- This scene, and its corresponding Config asset, will need to be configured similarly to the actual scenes of your game, as outlined below.
 
 ### Creating a new scene:
 
@@ -38,10 +42,11 @@ The intent of this scene is to house any scripts that should exist in perpetuity
 3.  Create a new `SceneConfig` inside of the `SceneConfigs` folder discussed above; follow naming convention of "*SceneName*Config".
 4.  Select the new config asset; add the Scene file to the `SceneRef` field.
 
-        A Few Notes: 
-        This variable takes in an AddressableAsset type, so you will be able to add your scene file if it is either marked as addressable or in a folder that has been marked as addressable, hence the setup of the GameScenes folder above.
-    
-        This process needs to be followed for the ManagerScene scene and the ManagerSceneConfig asset that was brought in through the sample.
+**Notes**:
+
+- This variable takes in an AddressableAsset type, so you will be able to add your scene file if it is either marked as addressable or in a folder that has been marked as addressable, hence the setup of the GameScenes folder above.
+
+- This process needs to be followed for the ManagerScene scene and the ManagerSceneConfig asset that was brought in through the sample.
 
 
 ### Loading a New Scene:
@@ -59,10 +64,11 @@ The intent of this scene is to house any scripts that should exist in perpetuity
 
 This scene is what your build loads into, and immediately loads in the Manager Scene and additively loads in the first scene of your game loop.
 
-- Move this scene into the top level of your Scenes folder.
-- Add Initialization to your Build Settings; it will be the only scene in your project's Build Settings due to the nature of how the remaining scenes are loaded through the Addressable system.
+1. Move this scene into the top level of your Scenes folder.
+2. Add Initialization to your Build Settings; it will be the only scene in your project's Build Settings due to the nature of how the remaining scenes are loaded through the Addressable system.
 
-        Note:
-        This scene, and the folder it is in, should not be marked as Addressable.
+**Note**:
+
+- This scene, and the folder it is in, should not be marked as Addressable.
 
 
